@@ -2,6 +2,10 @@
 
 namespace Croquemonster\Model;
 
+use Croquemonster\Model\Contract;
+use Croquemonster\Model\Monster;
+
+
 class Mission {
 
 	public function __construct(array $contracts, array $monsters) {

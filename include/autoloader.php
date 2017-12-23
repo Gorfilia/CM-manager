@@ -4,9 +4,8 @@ function __autoload($class) {
 
 	// on explose notre variable $class par \
 	$parts = preg_split('#\\\#', $class);
-
-	// on extrait le premier element 
 	array_shift($parts);
+
 	$path = __DIR__ . DIRECTORY_SEPARATOR . '..';
 
 	foreach($parts as $part) {

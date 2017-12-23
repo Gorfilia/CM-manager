@@ -13,7 +13,9 @@ class GenericObject implements IGenericObject {
 		}
 	}
 
-	public function percentage(GenericObject $object): int {}
+	public function percentage(GenericObject $object): int {
+		throw new RuntimeException("Method can be defined in children", 1);
+	}
 
 	/**
 	 * Create array of percentages sort by value desc
