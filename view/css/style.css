@@ -1,0 +1,14 @@
+table {
+	margin: auto;
+	border-collapse: collapse;
+}
+
+tbody td {
+	border: solid;
+	border-collapse: collapse;
+	color: black;
+}
+
+th {
+	color: black;
+}
