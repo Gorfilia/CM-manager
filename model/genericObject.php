@@ -1,5 +1,4 @@
 <?php
-
 namespace Croquemonster\Model;
 
 interface IGenericObject {

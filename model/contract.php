@@ -1,6 +1,4 @@
 <?php
-
-
 namespace Croquemonster\Model;
 
 use Croquemonster\Model\GenericObject;

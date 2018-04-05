@@ -1,5 +1,4 @@
 <?php
-
 namespace Croquemonster;
 
 use Croquemonster\Model\Contract;

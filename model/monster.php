@@ -1,12 +1,20 @@
 <?php
-
-
 namespace Croquemonster\Model;
 
-use Croquemonster\Model\GenericObject;
+class Monster {
+	private $id="2";
+    private $name="Nom du monstre";
 
-class Monster extends GenericObject {
-	public function percentage(GenericObject $contract): int {
-		return $this->percentageForMission($this, $contract);
-	}
+    private $sadism="Sadisme";
+    private $ugliness="Laideur";
+    private $power="Force";
+    private $greediness="Gourmandise";
+    private $control="Contrôle";
+    private $fight="Combat";
+    private $endurance="Endurance";
+    private $bounty="Prime";
+
+    public function __construct($id) {
+    	$this->id = $id;
+    }
 }
