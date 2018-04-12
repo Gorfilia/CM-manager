@@ -5,56 +5,56 @@ class Agency {
 	/**
 	 * Agency contracts
 	 *
-	 * @var $contracts Contracts
+	 * @var Contracts $contracts
 	 */
 	private $contracts;
 
 	/**
 	 * Agency fartBox - city name where is fartbox
 	 *
-	 * @var $fartBox string
+	 * @var string $fartBox
 	 */
 	private $fartBox;
 
 	/**
 	 * Agency fartTotal - loading level
 	 *
-	 * @var $fartTotal int
+	 * @var int $fartTotal
 	 */
 	private $fartTotal;
 
 	/**
 	 * Agency gold
 	 *
-	 * @var $gold int
+	 * @var int $gold
 	 */
 	private $gold;
 
 	/**
 	 * Agency id
 	 *
-	 * @var $id int
+	 * @var int $id
 	 */
 	private $id;
 
 	/**
 	 * Agency monsters
 	 *
-	 * @var $monsters Monsters
+	 * @var Monsters $monsters
 	 */
 	private $monsters;
 
 	/**
 	 * Agency name
 	 *
-	 * @var $name string
+	 * @var string $name
 	 */
 	private $name;
 
 	/**
 	 * Agency syndicate
 	 *
-	 * @var $syndicate Syndicate
+	 * @var Syndicate $syndicate
 	 */
 	private $syndicate;
 
