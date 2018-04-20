@@ -1,5 +1,5 @@
 <?php
-namespace Croquemonster\Model;
+namespace Croquemonster\Agency;
 
 class Agency {
 	/**

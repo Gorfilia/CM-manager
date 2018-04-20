@@ -39,7 +39,7 @@ class Main {
 	}
 	
 	public function __get($attribute) {
-		return isset($this->$attribute) ? $this->$attribute : null;
+		return $this->$attribute ?? null;
 	}
 
 	private static $URL = array(

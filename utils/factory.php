@@ -1,5 +1,8 @@
 <?php
-namespace Croquemonster\Model;
+namespace Croquemonster\Utils;
+
+use Croquemonster\Monster\Monsters;
+require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . 'autoloader.php';
 
 class Factory {
 	private static $collections = [
@@ -18,11 +21,10 @@ class Factory {
 			self::$instance = new Factory();
 		}
 
-		if (!in_array($className, self::$collections)) {
-			return self::$instance->createFromAttributes(new \SimpleXMLElement($uri), $className);
+		if (in_array(substr($className, strrpos($className, '\\')), self::$collections)) { //FIX control without namespace
+			return self::$instance->createCollection(new \SimpleXMLElement($uri), $className);
 		}
-
-		return self::$instance->createCollection(new \SimpleXMLElement($uri), $className);
+		return self::$instance->createFromAttributes(new \SimpleXMLElement($uri), $className);
 	}
 
 	private function createCollection(\SimpleXMLElement $simpleXml, string $className) {
@@ -40,18 +42,19 @@ class Factory {
 
 		// initialization constructor args
 		foreach ($parameters as $key => $value) {
-			echo $value->name . PHP_EOL;
 			if (isset($properties[$value->name])) {
-				$args[$key] = (string) $properties[$value->name];
+				$type = $value->getType()? : 'string';
+				settype($properties[$value->name], $type);
+				$args[$key] = $properties[$value->name];
 			}
 		}
 
-		$reflectionClass = new \ReflectionClass(__NAMESPACE__ . '\\' . $className);
+		$reflectionClass = new \ReflectionClass($className);
 		return $reflectionClass->newInstanceArgs($args);
 	}
 
 	private function getConstructParameters(string $className) {
-		$refMethod = new \ReflectionMethod(__NAMESPACE__ . '\\' . $className,  '__construct');
+		$refMethod = new \ReflectionMethod($className,  '__construct');
 		return $refMethod->getParameters();
 	}
 
@@ -59,7 +62,7 @@ class Factory {
 		$properties = [];
 
 		foreach($simpleXml->attributes() as $name => $value) {
-			if (property_exists(__NAMESPACE__ . '\\' . $className, $name)) {
+			if (property_exists($className, $name)) {
 				$properties[$name] = $value;
 			}
 		}
@@ -145,9 +148,11 @@ $xml =<<<HEREDOC
     /> 	
 </monsters>
 HEREDOC;
-require_once "monster.php";
-require_once "collection.php";
-require_once "monsters.php";
-$class = Factory::create($xml, "Monsters");
+// require_once "monster.php";
+// require_once "collection.php";
+// require_once "hasAgency.php";
+// require_once "monsters.php";
+
+$class = Factory::create($xml, Monsters::class);
 
 var_dump($class);

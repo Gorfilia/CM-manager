@@ -1,5 +1,5 @@
 <?php
-namespace Croquemonster\Model;
+namespace Croquemonster\Utils;
 
 class Collection implements \ArrayAccess {
 	private $collection;
