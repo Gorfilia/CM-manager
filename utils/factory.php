@@ -21,7 +21,7 @@ class Factory {
 			self::$instance = new Factory();
 		}
 
-		if (in_array(substr($className, strrpos($className, '\\')), self::$collections)) { //FIX control without namespace
+		if (in_array(substr($className, strrpos($className, '\\') + 1), self::$collections)) { //FIX control without namespace
 			return self::$instance->createCollection(new \SimpleXMLElement($uri), $className);
 		}
 		return self::$instance->createFromAttributes(new \SimpleXMLElement($uri), $className);
